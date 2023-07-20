@@ -11,10 +11,11 @@ import { GuessComponent } from './view/guess/guess.component';
 import { CorrectionInteractionComponent } from './view/correction-interaction/correction-interaction.component';
 import { WinComponent } from './view/win/win.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { GameManagerService } from './service/game-manager.service';
-import { AuthServiceService } from './service/auth.service';
+import { GameManagerService } from './service/game-manager/game-manager.service';
+import { AuthServiceService } from './service/auth/auth.service';
 import { FormErrorHandlerComponent } from './form-error-handler/form-error-handler.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
     CorrectionInteractionComponent,
     WinComponent,
     FormErrorHandlerComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CorrectionInteractionComponent } from './view/correction-interaction/correction-interaction.component';
 import { GuessComponent } from './view/guess/guess.component';
-import { AuthGuardService } from './service/auth-gard.service';
+import { AuthGuardService } from './service/auth-guard/auth-gard.service';
 import { HomeComponent } from './view/home/home.component';
 import { NewGameFormComponent } from './view/new-game-form/new-game-form.component';
 import { PickCardComponent } from './view/pick-card/pick-card.component';

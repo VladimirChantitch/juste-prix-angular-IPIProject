@@ -8,10 +8,11 @@ export class GameManagerService {
 
 
   gameStarted: boolean = false;
+  _cardPicked: boolean = false;
   challenger_name: string ='';
   game_master_name: string = '';
 
-  nextPlayerId: number = 0;
+  _nextPlayerId: number = 0;
 
   constructor(private rooterService: Router) { }
 
@@ -29,11 +30,20 @@ export class GameManagerService {
   }
 
   setNextPlayerId() : void {
-    if (this.nextPlayerId === 0){
-      this.nextPlayerId = 1;
+    if (this._nextPlayerId === 0){
+      this._nextPlayerId = 1;
     }else{
-      this.nextPlayerId === 0;
+      this._nextPlayerId === 0;
     }
+  }
+
+  logOut() : string[]  {
+    this.gameStarted = false;
+    this._cardPicked = false;
+    this.challenger_name ='';
+    this.game_master_name = '';
+    this._nextPlayerId = 0;
+    return ['/home'];
   }
 
   get gameState(): boolean{
@@ -41,7 +51,7 @@ export class GameManagerService {
   }
 
   get playerNameBynextPlayerId(): string{
-    if (this.nextPlayerId === 0){
+    if (this._nextPlayerId === 0){
       return this.game_master_name;
     }
     return this.challenger_name;
@@ -53,5 +63,13 @@ export class GameManagerService {
 
   get gameMastername(): string{
     return this.game_master_name;
+  }
+
+  get cardPicked(): boolean{
+    return this.cardPicked
+  }
+
+  get nextPlayerId(): number{
+    return this._nextPlayerId;
   }
 }

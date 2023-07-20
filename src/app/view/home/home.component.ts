@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameManagerService } from 'src/app/service/game-manager.service';
+import { GameManagerService } from 'src/app/service/game-manager/game-manager.service';
 
 @Component({
   selector: 'app-home',

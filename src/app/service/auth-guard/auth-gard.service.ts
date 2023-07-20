@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { AuthServiceService } from './auth.service';
-import { GameManagerService } from './game-manager.service';
+import { AuthServiceService } from '../auth/auth.service';
+import { GameManagerService } from '../game-manager/game-manager.service';
 @Injectable({
   providedIn: 'root'
 })

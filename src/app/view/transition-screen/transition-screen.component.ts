@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { GameManagerService } from 'src/app/service/game-manager.service';
+import { Router } from '@angular/router';
+import { GameManagerService } from 'src/app/service/game-manager/game-manager.service';
 
 @Component({
   selector: 'app-transition-screen',
@@ -9,14 +10,23 @@ import { GameManagerService } from 'src/app/service/game-manager.service';
 export class TransitionScreenComponent {
 
   playerName: string = '';
-  constructor(private gameMasterService: GameManagerService){
+  constructor(private gameMasterService: GameManagerService, private router: Router){
 
   }
   ngOnInit(){
     this.playerName = this.gameMasterService.playerNameBynextPlayerId;
   }
 
-  onPlayerReady() : void {
+  get nextRouteFromTransition() : string[]{
+    if(!this.gameMasterService._cardPicked){
+      return ['/pick-card'];
+    }else if (this.gameMasterService.nextPlayerId === 0){
+      return ['/correction'];
+    }
+    return ['/guess'];
+  }
 
+  onPlayerReady() : void {
+    this.router.navigate(this.nextRouteFromTransition);
   }
 }

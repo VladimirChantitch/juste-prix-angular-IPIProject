@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/service/auth.service';
+import { AuthServiceService } from 'src/app/service/auth/auth.service';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { GameManagerService } from 'src/app/service/game-manager.service';
+import { GameManagerService } from 'src/app/service/game-manager/game-manager.service';
 
 @Component({
   selector: 'app-new-game-form',
