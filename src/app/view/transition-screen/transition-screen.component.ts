@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameManagerService } from 'src/app/service/game-manager.service';
 
 @Component({
   selector: 'app-transition-screen',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class TransitionScreenComponent {
 
+  playerName: string = '';
+  constructor(private gameMasterService: GameManagerService){
+
+  }
+  ngOnInit(){
+    this.playerName = this.gameMasterService.playerNameBynextPlayerId;
+  }
+
+  onPlayerReady() : void {
+
+  }
 }

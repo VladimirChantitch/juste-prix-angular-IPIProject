@@ -1,1 +1,43 @@
-<p>new-game-form works!</p>
+<div class="background-image position-absolute w-100 h-100 opacity-75">
+  <div class=" container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 epic-form">
+      <h2 class="text-center mb-4">Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="my-3">
+        <div class="mb-3">
+          Name of the challenger
+          <input
+            formControlName="challenger_name"
+            class="form-control"
+            placeholder="challenger">
+            <app-form-error-handler
+              [control]="this.loginForm.controls['challenger_name']"
+              controlLabel="challenger_name"
+            >
+            </app-form-error-handler>
+        </div>
+
+        <div class="mb-3">
+          Name of the game master
+          <input
+            formControlName="game_master_name"
+            class="form-control"
+            placeholder="game master">
+            <app-form-error-handler
+              [control]="this.loginForm.controls['game_master_name']"
+              controlLabel="game_master_name"
+            >
+
+            </app-form-error-handler>
+        </div>
+
+        <button
+          type="submit"
+          class="d-grid col-4 mx-auto btn btn-dark"
+          [disabled]="!!loginForm.invalid">
+          {{ submitLabel }}
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

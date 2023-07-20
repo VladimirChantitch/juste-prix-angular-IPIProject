@@ -13,6 +13,8 @@ import { WinComponent } from './view/win/win.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GameManagerService } from './service/game-manager.service';
 import { AuthServiceService } from './service/auth.service';
+import { FormErrorHandlerComponent } from './form-error-handler/form-error-handler.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,15 @@ import { AuthServiceService } from './service/auth.service';
     PickCardComponent,
     GuessComponent,
     CorrectionInteractionComponent,
-    WinComponent
+    WinComponent,
+    FormErrorHandlerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     GameManagerService,

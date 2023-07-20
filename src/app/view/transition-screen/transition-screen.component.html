@@ -1,1 +1,11 @@
-<p>transition-screen works!</p>
+
+<div class="home-container position-relative">
+  <div class="background-image position-absolute w-100 h-100 opacity-75"></div>
+  <div class="content position-absolute top-50 start-50 translate-middle text-center text-white">
+    <h1 class="epic-title">Give the mouse and keyboard to</h1>
+    <button
+      class="btn btn-lg btn-outline-light epic-button"
+      (click)="onPlayerReady()"
+    >{{playerName}}</button>
+  </div>
+</div>
