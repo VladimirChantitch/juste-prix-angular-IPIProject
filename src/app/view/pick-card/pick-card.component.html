@@ -8,8 +8,7 @@
         <div class="card" [class.selected]="iCard.selected" (click)="onCardClicked(iCard)">
           <img [src]="iCard.assetPath" class="card-img-top" [alt]="iCard.title">
           <div class="card-body">
-            <h5 class="card-title">{{ iCard.title }}</h5>
-            <p class="card-text">{{ iCard.price }}</p>
+            <p class="epic-card-text">{{ iCard.price }}</p>
           </div>
         </div>
       </div>

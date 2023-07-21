@@ -100,6 +100,12 @@
 }
 
 .card.selected {
-  border: 2px solid #ffeb3b; /* Yellow border for the selected card */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow effect for the selected card */
+  border: 2px solid #ffeb3b;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.epic-card-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
 }
