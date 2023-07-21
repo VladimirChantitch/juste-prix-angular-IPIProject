@@ -44,7 +44,7 @@ export class CardSelectorService {
 
   pickACard(id: number) : void{
     this.iCard = this.iCards.find(c => c.id === id) as ICard;
-    this.gameManagerService.cardPicked = true;
+    this.gameManagerService.gameToken.isCardPicked = true;
     this.iCard.selected = true;
     this.gameManagerService.cardSelected(this.iCard);
   }

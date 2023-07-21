@@ -18,9 +18,9 @@ export class TransitionScreenComponent {
   }
 
   get nextRouteFromTransition() : string[]{
-    if(!this.gameMasterService.cardPicked){
+    if(!this.gameMasterService.gameToken.isCardPicked){
       return ['/pick-card'];
-    }else if (this.gameMasterService.nextPlayerId === 0){
+    }else if (this.gameMasterService.gameToken.nextPlayerId === 0){
       return ['/correction'];
     }
     return ['/guess'];

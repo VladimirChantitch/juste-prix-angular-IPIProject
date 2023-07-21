@@ -3,22 +3,17 @@ import { Router } from '@angular/router';
 import { ICard } from '../card-Selector/ICard';
 import { GuessService } from '../guess/guess.service';
 import { IGuess } from '../guess/IGuess';
+import { IGameToken } from './IGameToken';
+import { IPlayer } from './IPlayer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameManagerService {
 
+  gameToken: IGameToken;
 
-  gameStarted: boolean = false;
-  cardPicked: boolean = false;
-  challenger_name: string ='';
-  game_master_name: string = '';
-
-  nextPlayerId: number = 0;
-
-  currentCard!: ICard;
-  emptycard: ICard = {
+  emptyCard: ICard = {
       id: -1,
       title: 'NOPE',
       assetPath: '/assets/emptyMTG.png',
@@ -26,47 +21,63 @@ export class GameManagerService {
       selected: false
   }
 
-  totalTries: number = 7;
-  actualTries: number = 0;
+  emptyToken:IGameToken = {
+    gameMasterPlayer: {
+      playerName : '',
+      playerRole: '',
+      playerScore: 0
+    },
+    challengerPlayer: {
+      playerName : '',
+      playerRole: '',
+      playerScore: 0
+    },
+    cardPicked: this.emptyCard,
+    nextPlayerId: 0,
+    isGameStarted: false,
+    isCardPicked: false,
+    maxTries: 7,
+    actualTries: 0,
+    isGameWon: false
+  }
 
-  gameWon: boolean = false;
 
   constructor(private rooterService: Router, private guessService: GuessService) {
-    this.currentCard = this.emptycard;
+    this.gameToken = this.emptyToken;
   }
 
   startANewGame() : string[] {
-    if (!this.gameStarted){
+    if (!this.gameToken.isGameStarted){
       return ['/new-game']
     }else{
       return ['/home']
     }
   }
   setPlayersName(challenger_name: string, game_master_name: string) {
-    this.challenger_name = challenger_name;
-    this.game_master_name = game_master_name;
-    this.gameStarted = true;
+    this.gameToken.challengerPlayer.playerName = challenger_name;
+    this.gameToken.gameMasterPlayer.playerName = game_master_name;
+    this.gameToken.isGameStarted = true;
   }
 
   setNextPlayerId() : void {
-    if (this.nextPlayerId === 0){
-      this.nextPlayerId = 1;
-    }else if (this.nextPlayerId === 1){
-      this.nextPlayerId = 0;
+    if (this.gameToken.nextPlayerId === 0){
+      this.gameToken.nextPlayerId = 1;
+    }else if (this.gameToken.nextPlayerId === 1){
+      this.gameToken.nextPlayerId = 0;
     }
   }
 
   tryAPrice(tryValue: number): string[]{
     this.guessService.SetNewCurrentGuess(tryValue);
-    console.log(this.currentCard.price);
-    if (tryValue.toString() === this.currentCard.price.toString()){
-      this.gameWon = true;
+    console.log(this.gameToken.cardPicked.price);
+    if (tryValue.toString() === this.gameToken.cardPicked.price.toString()){
+      this.gameToken.isGameWon = true;
       return ['/win'];
     }else{
-      this.actualTries += 1;
-      if (this.actualTries >= this.totalTries){
-        this.actualTries = 0;
-        this.gameWon = false;
+      this.gameToken.actualTries += 1;
+      if (this.gameToken.actualTries >= this.gameToken.maxTries){
+        this.gameToken.actualTries = 0;
+        this.gameToken.isGameWon = false;
         return ['/win'];
       }
       return ['/transition'];
@@ -74,37 +85,44 @@ export class GameManagerService {
   }
 
   cardSelected(selectedCard: ICard){
-    this.currentCard = selectedCard;
-    this.cardPicked = true;
+    this.gameToken.cardPicked = selectedCard;
+    this.gameToken.isCardPicked = true;
   }
 
   logOut() : string[]  {
-    this.gameStarted = false;
-    this.cardPicked = false;
-    this.challenger_name ='';
-    this.game_master_name = '';
-    this.nextPlayerId = 0;
-    this.currentCard = this.emptycard;
+    this.gameToken = this.emptyToken;
     return ['/home'];
   }
 
+  replayGame() : string[]{
+    const oldChallenger: IPlayer = this.gameToken.challengerPlayer;
+    const oldGameMaster: IPlayer = this.gameToken.gameMasterPlayer;
+    this.gameToken.challengerPlayer = oldGameMaster;
+    this.gameToken.gameMasterPlayer = oldChallenger;
+    this.gameToken.isCardPicked = false;
+    this.gameToken.isGameWon = false;
+    this.gameToken.actualTries = 0;
+    this.gameToken.nextPlayerId = 0;
+    return ['/transition'];
+  }
+
   get gameState(): boolean{
-    return this.gameStarted;
+    return this.gameToken.isGameStarted;
   }
 
   get playerNameBynextPlayerId(): string{
-    if (this.nextPlayerId === 0){
-      return this.game_master_name;
+    if (this.gameToken.nextPlayerId === 0){
+      return this.gameToken.gameMasterPlayer.playerName;
     }
-    return this.challenger_name;
+    return this.gameToken.challengerPlayer.playerName;
   }
 
   get challengerName(): string {
-    return this.challenger_name;
+    return this.gameToken.challengerPlayer.playerName;
   }
 
   get gameMastername(): string{
-    return this.game_master_name;
+    return this.gameToken.gameMasterPlayer.playerName;
   }
 
   get currentGuess(): IGuess{
@@ -117,5 +135,12 @@ export class GameManagerService {
 
   get guesses(): IGuess[]{
     return this.guessService.guesses;
+  }
+
+  get winnerName() : string {
+    if (this.gameToken.isGameWon){
+      return '*Challenger* ' + this.gameToken.challengerPlayer.playerName;
+    }
+    return '*Game Master* ' + this.gameToken.gameMasterPlayer.playerName;
   }
 }

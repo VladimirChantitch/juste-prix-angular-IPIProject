@@ -13,7 +13,7 @@ export class CorrectionInteractionComponent {
   iCard: ICard;
   iGuess: IGuess;
   constructor(private gameManagerService: GameManagerService, private router: Router){
-    this.iCard = gameManagerService.currentCard;
+    this.iCard = gameManagerService.gameToken.cardPicked;
     this.iGuess = gameManagerService.currentGuess;
   }
 

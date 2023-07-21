@@ -18,7 +18,7 @@ export class GuessComponent {
   control_label:string = 'guessed price';
 
   constructor(private gameManagerService: GameManagerService, private router: Router, private formBuilder:FormBuilder){
-    this.iCard = gameManagerService.currentCard;
+    this.iCard = gameManagerService.gameToken.cardPicked;
     this.guessForm = this.formBuilder.group({
       price: [
         '',
@@ -45,7 +45,7 @@ export class GuessComponent {
   }
 
   get guessLeft() : number{
-    return (this.gameManagerService.totalTries - this.gameManagerService.actualTries);
+    return (this.gameManagerService.gameToken.maxTries - this.gameManagerService.gameToken.actualTries);
   }
 
   get guesses() : IGuess[]{

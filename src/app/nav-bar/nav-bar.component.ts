@@ -19,7 +19,7 @@ export class NavBarComponent {
   }
 
   get play_contextual_message(): string{
-    if (this.gameMasterService.gameStarted){
+    if (this.gameMasterService.gameToken.isGameStarted){
       return 'Resume Game ? ';
     }else{
       return 'New Game ? '
@@ -27,7 +27,7 @@ export class NavBarComponent {
   }
 
   get play_contextual_target(): string{
-    if (this.gameMasterService.gameStarted){
+    if (this.gameMasterService.gameToken.isGameStarted){
       return '/transition';
     }else{
       return '/new-game'
