@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { ICard } from 'src/app/service/card-Selector/ICard';
 import { GameManagerService } from 'src/app/service/game-manager/game-manager.service';
+import { IGuess } from 'src/app/service/guess/IGuess';
 import { GuessService } from 'src/app/service/guess/guess.service';
 
 @Component({
@@ -41,5 +42,13 @@ export class GuessComponent {
     const isValid = priceRegex.test(control.value);
 
     return isValid ? null : { invalidPrice: true };
+  }
+
+  get guessLeft() : number{
+    return (this.gameManagerService.totalTries - this.gameManagerService.actualTries);
+  }
+
+  get guesses() : IGuess[]{
+    return this.gameManagerService.guesses;
   }
 }

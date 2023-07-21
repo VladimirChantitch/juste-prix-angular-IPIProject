@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICard } from '../card-Selector/ICard';
 import { GuessService } from '../guess/guess.service';
+import { IGuess } from '../guess/IGuess';
 
 @Injectable({
   providedIn: 'root'
@@ -103,5 +104,17 @@ export class GameManagerService {
 
   get gameMastername(): string{
     return this.game_master_name;
+  }
+
+  get currentGuess(): IGuess{
+    return this.guessService.currentGuess;
+  }
+
+  setGuessComment(comment: string){
+    this.guessService.SetGuessComment(comment);
+  }
+
+  get guesses(): IGuess[]{
+    return this.guessService.guesses;
   }
 }

@@ -20,6 +20,7 @@ export class GuessService {
 
     this.currentGuess = guess;
     this.guesses.push(guess);
+    this.currentid += 1;
   }
 
   SetGuessComment(comment:string){

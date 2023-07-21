@@ -17,6 +17,8 @@ import { FormErrorHandlerComponent } from './form-error-handler/form-error-handl
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { GuessService } from './service/guess/guess.service';
+import { GuessTableComponent } from './guess-table/guess-table.component';
+import { GuessRowComponent } from './guess-row/guess-row.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { GuessService } from './service/guess/guess.service';
     WinComponent,
     FormErrorHandlerComponent,
     NavBarComponent,
+    GuessTableComponent,
+    GuessRowComponent,
   ],
   imports: [
     BrowserModule,

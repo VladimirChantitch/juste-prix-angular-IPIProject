@@ -11,6 +11,9 @@
           <img [src]="iCard.assetPath" class="card-img-top" [alt]="iCard.title">
         </div>
       </div>
+      <div class="col-md-8 col-lg-6 mb-4">
+        <app-guess-table [guess_left]="guessLeft" [guesses]="guesses"></app-guess-table>
+      </div>
     </div>
     <div class="row">
       <form [formGroup]="guessForm" (ngSubmit)="onGuessSubmit()" class="my-3">

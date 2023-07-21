@@ -1,1 +1,28 @@
-<p>correction-interaction works!</p>
+<div class="home-container position-relative">
+  <div class="background-image position-absolute w-100 h-100 opacity-75"></div>
+  <div class="content d-flex flex-column justify-content-center align-items-center h-100">
+    <h1 class="epic-title">Please pick a card</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4 mb-4 d-flex justify-content-between flex-fill">
+        <button class="btn btn-secondary btn-left btn btn-lg btn-outline-light epic-button mx-2" (click)="onLessExpensiveClicked()">
+          Less Expensive
+        </button>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card">
+          <img [src]="iCard.assetPath" class="card-img-top" [alt]="iCard.title">
+          <div class="card-body">
+            <h5 class="card-title">{{ iCard.title }}</h5>
+            <p class="card-text">Actual Price : {{ iCard.price }}</p>
+            <p class="card-text">Guessed Price : {{ iGuess.guessedPrice }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4 d-flex justify-content-between flex-fill">
+        <button class="btn btn-secondary btn-right btn btn-lg btn-outline-light epic-button mx-2" (click)="onMoreExpensiveClicked()">
+          More Expensive
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
