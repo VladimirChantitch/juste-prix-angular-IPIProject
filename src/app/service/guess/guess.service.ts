@@ -5,6 +5,7 @@ import { IGuess } from './IGuess';
   providedIn: 'root'
 })
 export class GuessService {
+
   currentGuess!: IGuess;
   guesses: IGuess[] = [];
   currentid: number = 0;
@@ -25,5 +26,8 @@ export class GuessService {
 
   SetGuessComment(comment:string){
     this.currentGuess.comment = comment;
+  }
+  reset() {
+    this.guesses = [];
   }
 }

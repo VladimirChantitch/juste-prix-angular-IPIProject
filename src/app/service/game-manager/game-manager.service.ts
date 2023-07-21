@@ -96,6 +96,7 @@ export class GameManagerService {
 
   logOut() : string[]  {
     this.gameToken = this.emptyToken;
+    this.guessService.reset();
     return ['/home'];
   }
 
@@ -108,6 +109,8 @@ export class GameManagerService {
     this.gameToken.isGameWon = false;
     this.gameToken.actualTries = 0;
     this.gameToken.nextPlayerId = 0;
+    this.gameToken.areCardsReady = false;
+    this.guessService.reset();
     return ['/transition'];
   }
 
