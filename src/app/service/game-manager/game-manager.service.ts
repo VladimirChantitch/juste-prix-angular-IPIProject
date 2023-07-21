@@ -21,26 +21,28 @@ export class GameManagerService {
       selected: false
   }
 
-  emptyToken:IGameToken = {
-    gameMasterPlayer: {
-      playerName : '',
-      playerRole: '',
-      playerScore: 0
-    },
-    challengerPlayer: {
-      playerName : '',
-      playerRole: '',
-      playerScore: 0
-    },
-    cardPicked: this.emptyCard,
-    nextPlayerId: 0,
-    isGameStarted: false,
-    isCardPicked: false,
-    maxTries: 7,
-    actualTries: 0,
-    isGameWon: false
+  get emptyToken():IGameToken {
+    const token: IGameToken = {
+      gameMasterPlayer:{
+        playerName : '',
+        playerRole: '',
+        playerScore: 0
+      },
+      challengerPlayer: {
+        playerName : '',
+        playerRole: '',
+        playerScore: 0
+      },
+      cardPicked: this.emptyCard,
+      nextPlayerId: 0,
+      isGameStarted: false,
+      isCardPicked: false,
+      maxTries: 7,
+      actualTries: 0,
+      isGameWon: false
+    }
+      return token;
   }
-
 
   constructor(private rooterService: Router, private guessService: GuessService) {
     this.gameToken = this.emptyToken;
