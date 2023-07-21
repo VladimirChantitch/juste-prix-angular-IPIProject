@@ -39,7 +39,8 @@ export class GameManagerService {
       isCardPicked: false,
       maxTries: 7,
       actualTries: 0,
-      isGameWon: false
+      isGameWon: false,
+      areCardsReady: false
     }
       return token;
   }

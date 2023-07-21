@@ -13,13 +13,19 @@ export class PickCardComponent {
   iCards!: ICard[];
   canReady: boolean = false;
   currentCard!: ICard;
+  isLoaded: boolean = false;
 
   constructor(private cardSelectorService: CardSelectorService, private gameManagerService: GameManagerService, private router: Router){
 
   }
 
-  ngOnInit(){
-    this.iCards = this.cardSelectorService.getFourNewCards();
+  async ngOnInit() {
+    try {
+      this.iCards = await this.cardSelectorService.getFourNewCards();
+      this.isLoaded = true;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   onCardClicked(iCard: ICard){

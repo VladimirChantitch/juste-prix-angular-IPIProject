@@ -11,6 +11,7 @@ export interface IGameToken{
   maxTries: number;
   actualTries: number;
   isGameWon: boolean;
+  areCardsReady: boolean;
 }
 
 
