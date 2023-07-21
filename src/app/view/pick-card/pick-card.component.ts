@@ -10,6 +10,7 @@ import { CardSelectorService } from 'src/app/service/card-Selector/card-selector
 export class PickCardComponent {
   iCards!: ICard[];
   canReady: boolean = false;
+  currentCard!: ICard;
 
   constructor(private cardSelectorService: CardSelectorService){
 
@@ -20,11 +21,11 @@ export class PickCardComponent {
   }
 
   onCardClicked(iCard: ICard){
-    this.cardSelectorService.pickACard(iCard.id);
+    this.currentCard = iCard
     this.canReady = true;
   }
 
   onReadyClicked(){
-
+    this.cardSelectorService.pickACard(this.currentCard.id);
   }
 }
