@@ -58,7 +58,8 @@ export class GameManagerService {
 
   tryAPrice(tryValue: number): string[]{
     this.guessService.SetNewCurrentGuess(tryValue);
-    if (tryValue === this.currentCard.price){
+    console.log(this.currentCard.price);
+    if (tryValue.toString() === this.currentCard.price.toString()){
       this.gameWon = true;
       return ['/win'];
     }else{
