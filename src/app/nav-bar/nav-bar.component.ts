@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GameManagerService } from '../service/game-manager/game-manager.service';
 import { Router } from '@angular/router';
+import { IPlayer } from '../service/game-manager/IPlayer';
 
 @Component({
   selector: 'app-nav-bar',
@@ -18,19 +19,9 @@ export class NavBarComponent {
     this.router.navigate(this.gameMasterService.logOut());
   }
 
-  get play_contextual_message(): string{
-    if (this.gameMasterService.gameToken.isGameStarted){
-      return 'Resume Game ? ';
-    }else{
-      return 'New Game ? '
-    }
-  }
-
-  get play_contextual_target(): string{
-    if (this.gameMasterService.gameToken.isGameStarted){
-      return '/transition';
-    }else{
-      return '/new-game'
-    }
-  }
+  @Input() play_contextual_target!: string;
+  @Input() play_contextual_message!: string;
+  @Input() isGameStarted!: boolean;
+  @Input() player1!: IPlayer;
+  @Input() player2!: IPlayer;
 }

@@ -8,12 +8,11 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" [routerLink]="play_contextual_target">{{play_contextual_message}}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       </li>
     </ul>
+    <div class="navbar-nav mx-auto" [hidden]="!isGameStarted">
+      <app-score [player1]="player1" [player2]="player2"></app-score>
+    </div>
   </div>
   <button class="btn btn-danger my-2 my-lg-0" (click)="LogOut()">Quit</button>
 </nav>

@@ -1,0 +1,36 @@
+.epic-score-table {
+  background-color: #1a1a1a;
+  border: 2px solid #f39c12;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  color: #f39c12;
+  font-size: 20px;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+.epic-score-title {
+  font-family: 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.player-name {
+  color: #ffea00;
+}
+
+.player-score {
+  color: #f39c12;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

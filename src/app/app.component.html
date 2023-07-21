@@ -1,2 +1,9 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar
+  [isGameStarted]="isGameStarted"
+  [player1]="player1"
+  [player2]="player2"
+  [play_contextual_message]="play_contextual_message"
+  [play_contextual_target]="play_contextual_target"
+
+></app-nav-bar>
 <router-outlet></router-outlet>

@@ -19,6 +19,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { GuessService } from './service/guess/guess.service';
 import { GuessTableComponent } from './guess-table/guess-table.component';
 import { GuessRowComponent } from './guess-row/guess-row.component';
+import { ScoreComponent } from './score/score.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { GuessRowComponent } from './guess-row/guess-row.component';
     NavBarComponent,
     GuessTableComponent,
     GuessRowComponent,
+    ScoreComponent,
   ],
   imports: [
     BrowserModule,

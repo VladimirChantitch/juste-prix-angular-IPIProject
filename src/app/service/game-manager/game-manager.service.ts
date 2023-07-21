@@ -72,12 +72,14 @@ export class GameManagerService {
     console.log(this.gameToken.cardPicked.price);
     if (tryValue.toString() === this.gameToken.cardPicked.price.toString()){
       this.gameToken.isGameWon = true;
+      this.gameToken.challengerPlayer.playerScore += 1;
       return ['/win'];
     }else{
       this.gameToken.actualTries += 1;
       if (this.gameToken.actualTries >= this.gameToken.maxTries){
         this.gameToken.actualTries = 0;
         this.gameToken.isGameWon = false;
+        this.gameToken.gameMasterPlayer.playerScore += 1;
         return ['/win'];
       }
       return ['/transition'];
