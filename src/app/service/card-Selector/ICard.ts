@@ -3,4 +3,5 @@ export interface ICard{
   title: string;
   assetPath: string;
   price: number;
+  selected: boolean;
 }

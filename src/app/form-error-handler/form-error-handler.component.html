@@ -18,4 +18,8 @@
     Le champ {{controlLabel}} doit avoir au maximum {{control.errors['maxlength']['requiredLength']}} {{control.errors['maxlength']['requiredLength'] > 1 ? 'caractères' : 'caractère'}}
   </div>
 
+  <div *ngIf="control.errors['invalidPrice']">
+    Le champ {{controlLabel}} doit avoir la forme d'une valeur monétaire en euro : ex == 172.36
+  </div>
+
 </div>

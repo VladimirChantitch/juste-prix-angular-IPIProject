@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICard } from '../card-Selector/ICard';
+import { GuessService } from '../guess/guess.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class GameManagerService {
       id: -1,
       title: 'NOPE',
       assetPath: '/assets/emptyMTG.png',
-      price: 0
+      price: 0,
+      selected: false
   }
 
   totalTries: number = 7;
@@ -28,7 +30,7 @@ export class GameManagerService {
 
   gameWon: boolean = false;
 
-  constructor(private rooterService: Router) {
+  constructor(private rooterService: Router, private guessService: GuessService) {
     this.currentCard = this.emptycard;
   }
 
@@ -48,15 +50,16 @@ export class GameManagerService {
   setNextPlayerId() : void {
     if (this.nextPlayerId === 0){
       this.nextPlayerId = 1;
-    }else{
-      this.nextPlayerId === 0;
+    }else if (this.nextPlayerId === 1){
+      this.nextPlayerId = 0;
     }
   }
 
   tryAPrice(tryValue: number): string[]{
+    this.guessService.SetNewCurrentGuess(tryValue);
     if (tryValue === this.currentCard.price){
       this.gameWon = true;
-      return ['/win']
+      return ['/win'];
     }else{
       this.actualTries += 1;
       if (this.actualTries >= this.totalTries){
@@ -64,7 +67,7 @@ export class GameManagerService {
         this.gameWon = false;
         return ['/win'];
       }
-      return ['/transition']
+      return ['/transition'];
     }
   }
 

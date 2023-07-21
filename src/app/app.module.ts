@@ -16,6 +16,7 @@ import { AuthServiceService } from './service/auth/auth.service';
 import { FormErrorHandlerComponent } from './form-error-handler/form-error-handler.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { GuessService } from './service/guess/guess.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   providers: [
     GameManagerService,
     AuthServiceService,
+    GuessService
   ],
   bootstrap: [AppComponent]
 })
