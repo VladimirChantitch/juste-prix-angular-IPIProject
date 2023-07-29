@@ -42,7 +42,7 @@ import { ScoreComponent } from './score/score.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     GameManagerService,
