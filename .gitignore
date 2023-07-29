@@ -3,3 +3,9 @@
 ################################################################################
 
 /.angular/cache/16.1.4/angular-webpack/7b817f75dc0a0dff5bf5d8831f2c03fb8630b98b/0.pack
+/.angular/cache/16.1.4/angular-webpack/7b817f75dc0a0dff5bf5d8831f2c03fb8630b98b/index.pack
+/.angular/cache/16.1.4/babel-webpack
+/.vs/juste-prix/FileContentIndex
+/node_modules
+/dist/juste-prix
+*.sqlite
