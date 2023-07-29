@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { GameManagerService } from './service/game-manager/game-manager.service';
 import { IPlayer } from './service/game-manager/IPlayer';
-import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,7 @@ export class AppComponent {
 
   title = 'juste-prix';
 
-  constructor(private gameManagerService: GameManagerService, private _electronService: ElectronService){
+  constructor(private gameManagerService: GameManagerService){
 
   }
 
